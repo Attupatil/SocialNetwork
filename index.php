@@ -1,1 +1,1 @@
-<?php include_once("Home.html"); ?>
+<?php include_once("Views/Templates/Home.html"); ?>
