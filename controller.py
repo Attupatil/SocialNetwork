@@ -1,7 +1,7 @@
 """
 This is Our Controller. Basically this is the heart of the project because it holds all the models and view together.
 All the routes and classes are defined in here.
-"""
+
   @version : 1.0.2,
   @"created_at": "2020-07-08T12:44:21Z",
   @"updated_at": "2020-12-08T13:51:24Z",
@@ -9,7 +9,7 @@ All the routes and classes are defined in here.
   @"git_url": "git://github.com/Attupatil/SocialNetwork.git",
   @"ssh_url": "git@github.com:Attupatil/SocialNetwork.git",
   @"clone_url": "https://github.com/Attupatil/SocialNetwork.git",
-
+"""
 
 import web
 from Models import RegisterModel, LoginModel, Posts
