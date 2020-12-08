@@ -1,5 +1,5 @@
 """
-This is Controller. Basically this is the heart of the project because it holds all the models and view together.
+This is Our Controller. Basically this is the heart of the project because it holds all the models and view together.
 All the routes and classes are defined in here.
 """
 
@@ -32,12 +32,18 @@ render = web.template.render('Views/Templates', base='MainLayout', globals={'ses
 
 class Home:
     def GET(self):
-        data = type('obj', (object,), {'username': 'attu', 'password': 'attu'})
+        data = type('obj', (object,), {'username': 'attu', 'password': 'patil'})
+
         login = LoginModel.LoginModel()
         isCorrect = login.check_user(data)
+
         if isCorrect:
             session_data['user'] = isCorrect
-        return render.Home()
+
+        post_model = Posts.Posts()  
+        posts = post_model.get_all_posts()
+
+        return render.Home(posts)
 
 
 class Register:
