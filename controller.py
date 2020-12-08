@@ -1,4 +1,4 @@
-#@version : 1.0.2,
+@version : 1.0.2,
 @created_at : "2020-07-08T12:44:21Z",
 @updated_at : "2020-12-08T13:51:24Z",
 @pushed_at": "2020-12-08T13:51:21Z",
