@@ -1,15 +1,15 @@
-@version : 1.0.2,
+#@version : 1.0.2,
 @created_at : "2020-07-08T12:44:21Z",
-@"updated_at": "2020-12-08T13:51:24Z",
-@"pushed_at": "2020-12-08T13:51:21Z",
- @"git_url": "git://github.com/Attupatil/SocialNetwork.git",
-  @"ssh_url": "git@github.com:Attupatil/SocialNetwork.git",
-  @"clone_url": "https://github.com/Attupatil/SocialNetwork.git",
+@updated_at : "2020-12-08T13:51:24Z",
+@pushed_at": "2020-12-08T13:51:21Z",
+@"git_url": "git://github.com/Attupatil/SocialNetwork.git",
+@"ssh_url": "git@github.com:Attupatil/SocialNetwork.git",
+@"clone_url": "https://github.com/Attupatil/SocialNetwork.git",
 
-"""
-This is Our Controller. Basically this is the heart of the project because it holds all the models and view together.
-All the routes and classes are defined in here.
-"""
+
+#This is Our Controller. Basically this is the heart of the project because it holds all the models and view together.
+#All the routes and classes are defined in here.
+
   
 import web
 from Models import RegisterModel, LoginModel, Posts
