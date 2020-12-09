@@ -1,14 +1,14 @@
 
-
 $(document).ready(function(){
     console.log("loaded");
     $.material.init();
 
     $(document).on("submit", "#register-form", function(e){
-        e.preventDefault()
+        e.preventDefault();
+
         var form = $('#register-form').serialize();
         $.ajax({
-            url : '/postregistration',
+            url: '/postregistration',
             type: 'POST',
             data: form,
             success: function(response){
@@ -17,27 +17,27 @@ $(document).ready(function(){
         });
     });
 
-    $(document).on("submit", "#login-form", function(e){
-        e.preventDefault()
+    $(document).on('submit', '#login-form', function(e){
+        e.preventDefault();
 
         var form = $(this).serialize();
         $.ajax({
-           url: '/check-login',
-           type: 'POST',
-           data: form ,
-           success: function(resp){
-               if(resp == 'error'){
-                alert('Could not login in');
-               }else{
-                console.log("logged in as",resp);
-                window.location.href = '/';
-               }
-           }
-        });
-    });
+            url: '/check-login',
+            type: 'POST',
+            data: form,
+            success: function(res){
+                if(res== "error"){
+                    alert("Could not log in.");
+                }else{
+                    console.log("Logged in as", res);
+                    window.location.href = "/";
+                }
+            }
+        })
+    })
 
-    $(document).on('click', '#logout-link',function(e){
-        e.preventDefault()
+    $(document).on('click', '#logout-link', function(e){
+        e.preventDefault();
         $.ajax({
             url: '/logout',
             type: 'GET',
@@ -45,23 +45,59 @@ $(document).ready(function(){
                 if(res == 'success'){
                     window.location.href = '/login';
                 }else{
-                    alert('something gone wrong!');
+                    alert("Something went wrong.");
+                }
+            }
+        })
+    });
+
+    $(document).on('submit', '#post-activity', function(e){
+        e.preventDefault();
+        form = $(this).serialize()
+
+        $.ajax({
+            url: '/post-activity',
+            type: 'POST',
+            data: form,
+            success: function(post){
+                console.log(post);
+                if(post){
+                    window.location.href = window.location.href
                 }
             }
         });
     });
 
-    $(document).on("submit", "#post-activity", function(e){
-        e.preventDefault()
-        var form = $('#post-activity').serialize();
+    $(document).on('submit', '#settings-form', function(e){
+        e.preventDefault();
+
+        var form = $(this).serialize();
         $.ajax({
-            url: '/post-activity',
+            url: '/update-settings',
             type: 'POST',
             data: form,
+            success: function(res){
+                if(res == "success"){
+                    window.location.href = window.location.href;
+                }else{
+                    alert(res);
+                }
+            }
+        });
+    });
+
+    $(document).on("submit", ".comment-form", function(e){
+        e.preventDefault();
+
+        var form = $(this).serialize();
+        $.ajax({
+            url: "/submit-comment",
+            type: "POST",
+            data: form,
+            dataType: "json",
             success: function(res){
                 console.log(res);
             }
         });
     });
-
 });

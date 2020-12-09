@@ -13,7 +13,7 @@ class RegisterModel:
     def __init__(self):
         # mongodb initializations 1.You need to start mongo client, 2.create a collection 3.add entry to the collection
         self.client = MongoClient()
-        self.db = self.client.CodersArena
+        self.db = self.client.Coplat
         self.Users = self.db.users
 
     # Grab and store the information entered by user into database
