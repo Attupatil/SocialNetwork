@@ -12,7 +12,7 @@ import bcrypt
 class RegisterModel:
     def __init__(self):
         # mongodb initializations 1.You need to start mongo client, 2.create a collection 3.add entry to the collection
-        self.client = MongoClient()
+        self.client = MongoClient("mongodb+srv://m001-student:chalhat2@sandbox.dmpef.mongodb.net/Coplat?retryWrites=true&w=majority")
         self.db = self.client.Coplat
         self.Users = self.db.users
 
