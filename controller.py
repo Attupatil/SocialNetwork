@@ -1,16 +1,8 @@
-@version : 1.0.2,
-@created_at : "2020-07-08T12:44:21Z",
-@updated_at : "2020-12-08T13:51:24Z",
-@pushed_at": "2020-12-08T13:51:21Z",
-@"git_url": "git://github.com/Attupatil/SocialNetwork.git",
-@"ssh_url": "git@github.com:Attupatil/SocialNetwork.git",
-@"clone_url": "https://github.com/Attupatil/SocialNetwork.git",
+"""
+This is Our Controller. Basically this is the heart of the project because it holds all the models and view together.
+All the routes and classes are defined in here.
+"""
 
-
-#This is Our Controller. Basically this is the heart of the project because it holds all the models and view together.
-#All the routes and classes are defined in here.
-
-  
 import web
 from Models import RegisterModel, LoginModel, Posts
 
@@ -20,11 +12,17 @@ web.config.debug = False
 urls = (
     '/', 'Home',
     '/register', 'Register',
-    '/postregistration', 'PostRegistration',
     '/login', 'Login',
     '/logout', 'Logout',
+    '/postregistration', 'PostRegistration',
     '/check-login', 'CheckLogin',
-    '/post-activity', 'PostActivity'
+    '/post-activity', 'PostActivity',
+    '/profile/(.*)/info', 'UserInfo',
+    '/profile/(.*)', 'UserProfile',
+    '/settings', 'UserSettings',
+    '/update-settings', 'UpdateSettings',
+    '/submit-comment', 'SubmitComment',
+    '/upload-image/(.*)', 'UploadImage'
 )
 
 # Start the instance of our web app
@@ -40,13 +38,13 @@ render = web.template.render('Views/Templates', base='MainLayout', globals={'ses
 
 class Home:
     def GET(self):
-        data = type('obj', (object,), {'username': 'attu', 'password': 'patil'})
+        # data = type('obj', (object,), {'username': 'attu', 'password': 'patil'})
 
-        login = LoginModel.LoginModel()
-        isCorrect = login.check_user(data)
+        # login = LoginModel.LoginModel()
+        # isCorrect = login.check_user(data)
 
-        if isCorrect:
-            session_data['user'] = isCorrect
+        # if isCorrect:
+        #     session_data['user'] = isCorrect
 
         post_model = Posts.Posts()  
         posts = post_model.get_all_posts()
@@ -83,6 +81,53 @@ class CheckLogin:
         # otherwise return error
         return 'error'
 
+class UserProfile:
+    def GET(self, user):
+        login = LoginModel.LoginModel()
+        user_info = login.get_profile(user)
+
+        post_model = Posts.Posts()
+        posts = post_model.get_user_posts(user)
+        return render.Profile(posts, user_info)
+
+
+class UserInfo:
+    def GET(self, user):
+        login = LoginModel.LoginModel()
+        user_info = login.get_profile(user)
+
+        return render.Info(user_info)
+
+
+class UserSettings:
+    def GET(self):
+
+        return render.Settings()
+
+
+class UpdatingSettings:
+    def POST(self):
+        data = web.input()
+        data.username = session_data["user"]["username"]
+
+        settings_model = LoginModel.LoginModel()
+        if settings_model.update_info(data):
+            return "success"
+        else:
+            return "A fatal error has occurred."
+
+class SubmitComment:
+    def POST(self):
+        data = web.input()
+        data.username = session_data["user"]["username"]
+
+        post_model = Posts.Posts()
+        added_comment = post_model.add_comment(data)
+        if added_comment:
+            return added_comment
+        else:
+            return {"error": "403"}
+
 
 class Logout:
     def GET(self):
@@ -102,6 +147,7 @@ class PostRegistration:
         # Using insert user we will create a new entry to the data base for this user who registers
         reg_model.insert_user(data)
         return data.username
+
 
 
 class PostActivity:

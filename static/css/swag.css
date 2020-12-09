@@ -7,9 +7,20 @@
   height: 100%;
   overflow: auto;
 }
-
-
-
+/*Grind isotope to be figured out
+.grid-item{
+  width: 25%
+  padding: 10px;
+  margin: 10px;
+}
+.card{
+  background: teal;
+}*/
+/*.editor {
+    position: absolute;
+    width: 500px;
+    height: 400px;
+}*/
 /* Sidebar links */
 .sidebar a {
   display: block;

@@ -14,7 +14,7 @@ from pymongo import MongoClient
 class LoginModel:
     def __init__(self):
         self.client = MongoClient()
-        self.db = self.client.CodersArena
+        self.db = self.client.Coplat
         self.Users = self.db.users
     
     # Check if password entered by user is correct or not
@@ -33,3 +33,6 @@ class LoginModel:
             # if password is not found return error
             return 'error'
 
+    def get_profile(self, user):
+        user_info = self.Users.find_one({"username": user})
+        return user_info

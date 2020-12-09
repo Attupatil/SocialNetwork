@@ -5,7 +5,7 @@ from pymongo import MongoClient
 class Posts:
     def __init__(self):
         self.client = MongoClient()
-        self.db = self.client.CodersArena
+        self.db = self.client.Coplat
         self.Users = self.db.users
         self.Posts = self.db.posts
 
@@ -26,3 +26,19 @@ class Posts:
             new_posts.append(post)
 
         return new_posts
+        
+    def get_user_posts(self, user):
+        all_posts = self.Posts.find({"username": user}).sort("date_added", -1)
+        new_posts = []
+
+        for post in all_posts:
+            print(post)
+            post["user"] = self.Users.find_one({"username": post["username"]})
+            new_posts.append(post)
+
+        return new_posts
+
+    def add_comments(self, comment):
+        inserted = self.Comments.insert({"post_id": comment["post_id"], "content": comment["comment-text"],
+                                         "date_added": datetime.datetime.now(), "username": comment["username"]})
+        return inserted
