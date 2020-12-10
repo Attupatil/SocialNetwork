@@ -11,7 +11,7 @@ social media site made for coders
 ##
 ![Image](https://github.com/Attupatil/SocialNetwork/blob/master/ScreenShot/Screenshot%20(60).png "Attupatil_SocialNetwork/Coplat")
 ##
-![Image](https://github.com/Attupatil/SocialNetwork/blob/master/ScreenShot/Screenshot%20(61).png "Attupatil_SocialNetwork/Coplat")
+![Image](https://github.com/Attupatil/SocialNetwork/blob/master/ScreenShot/Screenshot%20(64).png "Attupatil_SocialNetwork/Coplat")
 ##
 ![Image](https://github.com/Attupatil/SocialNetwork/blob/master/ScreenShot/Screenshot%20(62).png "Attupatil_SocialNetwork/Coplat")
 ##
