@@ -4,7 +4,7 @@ from pymongo import MongoClient
 
 class Posts:
     def __init__(self):
-        self.client = MongoClient("mongodb+srv://m2@sandbox.dmpef.mongodb.net/Coplat?retryWrites=true&w=majority")
+        self.client = MongoClient()
         self.db = self.client.Coplat
         self.Users = self.db.users
         self.Posts = self.db.posts
