@@ -13,7 +13,7 @@ from pymongo import MongoClient
 # Create a login model
 class LoginModel:
     def __init__(self):
-        self.client = MongoClient("mongodb+srv://@sandbox.dmpef.mongodb.net/Coplat?retryWrites=true&w=majority")
+        self.client = MongoClient()
         self.db = self.client.Coplat
         self.Users = self.db.users
     
