@@ -5,7 +5,23 @@ $var js: static/js/jquery-3.4.1.min.js static/js/bootstrap.min.js static/js/mate
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
+    <!-- -------------------------------------- -->
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width,initial-scale=1" name="viewport">
+    <meta content="description" name="description">
+    <meta name="google" content="notranslate" />
+    
+
+    <!-- Disable tap highlight on IE -->
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/css/assets/c.jpg">
+    <link href="/static/css/assets/c.jpg" rel="icon">
+    <!-- -------------------------------------- -->
+
     <title>Coplat</title>
+    <meta name="description" content="COPLAT | A CODE SHARING PLATFORM">
     $if self.css:
         $for style in self.css.split():
             <link rel="stylesheet" href="$style" />

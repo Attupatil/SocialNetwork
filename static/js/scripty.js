@@ -13,6 +13,7 @@ $(document).ready(function(){
             data: form,
             success: function(response){
                 console.log(response);
+                window.location.href = "/login";
             }
         });
     });

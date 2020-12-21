@@ -11,7 +11,7 @@ import bcrypt
 # Create a class for our model
 class RegisterModel:
     def __init__(self):
-        # mongodb initializations 
+        # mongodb initializations 1.You need to start mongo client, 2.create a collection 3.add entry to the collection
         self.client = MongoClient()
         self.db = self.client.Coplat
         self.Users = self.db.users
